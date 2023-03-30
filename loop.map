@@ -1,0 +1,50 @@
+[
+    {
+        "name": "Liminal Space",
+        "desc": "You are at a liminal space of a demon's layer",
+        "exits":  {"north": 1, "south": 2, "east": 3},
+        "items": ["white stone"]
+    },
+    {
+        "name": "Mirror Maze",
+        "desc": "You are in a room with mirrored walls.",
+        "exits": {"south": 0},  
+        "items": ["clear stone"]
+    },
+    {
+        "name": "Bat Cavern",
+        "desc": "This room looks like a dark cave with bats hanging from the ceiling.",
+        "exits": {"north": 0, "east": 6},
+        "items": ["shadow stone"]
+    },
+    {
+        "name": "Bazaar",
+        "desc": "You are in a empty market which sells magical weapons.",
+        "exits": {"west": 0, "north": 4, "east": 7},
+        "items": ["time stone"]
+    },
+    {
+        "name": "Meat Locker",
+        "desc": "This room is fancy. It's red!",
+        "exits": {"south": 3, "east": 5},
+        "items": ["life orb"]
+    },
+    {
+        "name": "Quicksand Pit",
+        "desc": "You are in a room, with quick sand pits be careful!",
+        "exits": {"west": 4}, 
+        "items": ["earth stone"]
+    },
+    {
+        "name": "Volcano",
+        "desc": "You are in a active volcano and it is very hot!",
+        "exits": {"west": 2},  
+        "items": ["volcanic orb"]
+    },
+    {
+        "name": "Dojo",
+        "desc": "You are in the demon lord's dojo and he attacks!",
+        "exits": {"west": 3}, 
+        "boss": "Demon Lord Leviathan"
+    }
+]
