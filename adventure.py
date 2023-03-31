@@ -12,8 +12,8 @@ if len(sys.argv) != 2:
 filename = sys.argv[1]
 
 # read the JSON data from the file
-with open(filename, "r") as f:
-    game_map = json.load(f)
+game_map = json.load(open(filename, "r"))
+restart_map = game_map
 
 
 player_inventory = []
@@ -34,7 +34,7 @@ def print_location():
     if "items" in current_location:
         items_in_room = current_location["items"]
         items = ", ".join(items_in_room)
-        print(f"items : {items}")
+        print(f"Items : {items}")
 
 
 def handle_input(input_str):
@@ -43,11 +43,92 @@ def handle_input(input_str):
     print(input_str)
     print('@@@@@@@@@@@@@@@@@@@@@@')
 
+    # valid_verbs = ['go', 'get', 'look', 'inventory', 'help', 'quit']
+    valid_verb_dict = {"go": "this verb is used to move in a direction listed in room exits \n(example: go east) \nPlayer can also directly enter the direction without using go i.e e for east to go east", "\nget": "used to pick up a item (example: get life orb)",
+                       "\nlook": "used to understand where the player is currently", '\ninventory': "used to check the items in inventory", '\nhelp': "provides the commands a player can use in the game", '\nquit': "used to exit/end the game"}
+
     if input_str.startswith('go'):
         direction = input_str[3:]
         if len(direction) == 0:
             print("Sorry, you need to 'go' somewhere.\n")
         else:
+            if direction in current_location['exits']:
+                new_location_id = current_location['exits'][direction]
+                new_location = game_map[new_location_id]
+                print('You go', direction + '.')
+                return new_location
+            else:
+                print(f"There's no way to go {direction}.\n")
+    # implementing directions as verbs extension
+    elif len(input_str) == 1:
+        if input_str.startswith('e'):
+            direction = 'east'
+            if direction in current_location['exits']:
+                new_location_id = current_location['exits'][direction]
+                new_location = game_map[new_location_id]
+                print('You go', direction + '.')
+                return new_location
+            else:
+                print(f"There's no way to go {direction}.\n")
+        elif input_str.startswith('w'):
+            direction = 'west'
+            if direction in current_location['exits']:
+                new_location_id = current_location['exits'][direction]
+                new_location = game_map[new_location_id]
+                print('You go', direction + '.')
+                return new_location
+            else:
+                print(f"There's no way to go {direction}.\n")
+        elif input_str.startswith('n'):
+            direction = 'north'
+            if direction in current_location['exits']:
+                new_location_id = current_location['exits'][direction]
+                new_location = game_map[new_location_id]
+                print('You go', direction + '.')
+                return new_location
+            else:
+                print(f"There's no way to go {direction}.\n")
+
+        elif input_str.startswith('s'):
+            direction = 'south'
+            if direction in current_location['exits']:
+                new_location_id = current_location['exits'][direction]
+                new_location = game_map[new_location_id]
+                print('You go', direction + '.')
+                return new_location
+            else:
+                print(f"There's no way to go {direction}.\n")
+    elif len(input_str) == 2:  # ne nw se sw
+        if input_str.startswith('ne'):
+            direction = 'northeast'
+            if direction in current_location['exits']:
+                new_location_id = current_location['exits'][direction]
+                new_location = game_map[new_location_id]
+                print('You go', direction + '.')
+                return new_location
+            else:
+                print(f"There's no way to go {direction}.\n")
+        elif input_str.startswith('nw'):
+            direction = 'northwest'
+            if direction in current_location['exits']:
+                new_location_id = current_location['exits'][direction]
+                new_location = game_map[new_location_id]
+                print('You go', direction + '.')
+                return new_location
+            else:
+                print(f"There's no way to go {direction}.\n")
+        elif input_str.startswith('se'):
+            direction = 'southeast'
+            if direction in current_location['exits']:
+                new_location_id = current_location['exits'][direction]
+                new_location = game_map[new_location_id]
+                print('You go', direction + '.')
+                return new_location
+            else:
+                print(f"There's no way to go {direction}.\n")
+
+        elif input_str.startswith('sw'):
+            direction = 'southwest'
             if direction in current_location['exits']:
                 new_location_id = current_location['exits'][direction]
                 new_location = game_map[new_location_id]
@@ -90,17 +171,14 @@ def handle_input(input_str):
     elif input_str.startswith("look"):
         pass
     elif input_str.startswith("help"):
-        print("""
-        You can run the following commands:
-        go 
-        get 
-        look 
-        inventory 
-        quit 
-        help 
-        """)
+        print("You can run the following commands: \n")
+        # for i in valid_verbs:
+        #     print(i, end="\n")
+
+        for key, value in valid_verb_dict.items():
+            print(key, ":", value)
     else:
-        print('I don\'t understand.')
+        print('I don\'t understand that enter a valid command.')
 
 
 # demon lord ascii art
@@ -120,24 +198,58 @@ demon = """
     `\_/'   `"`   `\_/'  
 """
 
+print("""
+Gametitle: Orb6
+    
+You are in the layer of the demon lord leviathan. His layer is big and unexplored. Your objective is to defeat the demon lord as his curse had been tormenting the land for a decade.
+But as you are now your powers are useless against him! 
 
-# Start the game loop
-while True:
+You need to search his layers for the many orbs of power. You can only defeat the
+demon lord if you have the powers of 6 orbs. You must blindly navigate his layer as it is unmapped. 
+
+You must travel blindly on this lonely search for the orbs.
+If you happen to enter the room which the demon lord resides without the 6 orbs it will lead to certain defeat. 
+
+You will start your journey at the entance of the layer.
+Be careful warrior the future of this land depends on you!
+ """)
+game_running = True
+# start the game loop
+while game_running:
     print_location()
     if 'boss' in current_location:
         print(demon)
         if len(player_inventory) >= 6:
             print(
                 "The Demon Lord attacked you! but you used the power of the 6 orbs and defeated him!!!\n")
-            print("You Win!")
-            break
+            print("\nYou Win!")
+            play_again = input(
+                "\nDo you want to play again from the 1st room? \nPress Y to play again or any other key to quit ").lower().strip()
+            if play_again == "y":
+                game_map = restart_map
+                player_inventory = []
+                current_location = start_location
+                print_location()
+                pass
+            else:
+                break
         else:
             print(
                 "The Demon Lord attacked you! since you didn't have the power of the 6 orbs he kills you :(")
-            print("You Lose!")
-            break
+            print("\nYou Lose!")
+            play_again = input(
+                "\nDo you want to play again from the 1st room? \nPress Y to play again or any other key to quit ").lower().strip()
+            if play_again == "y":
+                game_map = restart_map
+                player_inventory = []
+                current_location = start_location
+                print_location()
+                pass
+            else:
+                break
+
     try:
-        action = input('What would you like to do? ')
+        action = input('\nWhat would you like to do? ')
         if re.match(re.compile(r'quit', re.IGNORECASE), action.lower().strip()):
             break
         new_location = handle_input(action)

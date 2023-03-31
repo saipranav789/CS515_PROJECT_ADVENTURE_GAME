@@ -1,3 +1,6 @@
-user_input = input("enter command: ")
-user_input = user_input.lower().strip()
-print(user_input)
+# Sample dictionary
+my_dict = {'name': 'John', 'age': 25, 'city': 'New York'}
+
+# Printing key-value pairs using a for loop
+for key, value in my_dict.items():
+    print(key, ":", value)
