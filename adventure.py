@@ -25,7 +25,7 @@ current_location = game_map[0]
 
 def print_location():
     print("\n")
-    print(current_location['name'])
+    print("> "+current_location['name'])
     print("\n")
     print(current_location['desc'])
     print("\n")
@@ -36,12 +36,14 @@ def print_location():
         items = ", ".join(items_in_room)
         print(f"Items : {items}")
 
+# Handling user input
+
 
 def handle_input(input_str):
     input_str = input_str.lower().strip()
-    print('@@@@@@@@@@@@@@@@@@@@@@')
-    print(input_str)
-    print('@@@@@@@@@@@@@@@@@@@@@@')
+    # print('@@@@@@@@@@@@@@@@@@@@@@')
+    # print(input_str)
+    # print('@@@@@@@@@@@@@@@@@@@@@@')
 
     # valid_verbs = ['go', 'get', 'look', 'inventory', 'help', 'quit']
     valid_verb_dict = {"go": "this verb is used to move in a direction listed in room exits \n(example: go east) \nPlayer can also directly enter the direction without using go i.e e for east to go east", "\nget": "used to pick up a item (example: get life orb)",
@@ -172,9 +174,6 @@ def handle_input(input_str):
         pass
     elif input_str.startswith("help"):
         print("You can run the following commands: \n")
-        # for i in valid_verbs:
-        #     print(i, end="\n")
-
         for key, value in valid_verb_dict.items():
             print(key, ":", value)
     else:
