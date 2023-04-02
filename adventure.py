@@ -2,7 +2,16 @@
 import json
 import sys
 import re
+"""
+doctests for adventure.py
 
+>>> go west
+There's no way to go west.
+What would you like to do? 
+
+
+
+"""
 # check if the command line argument is provided
 if len(sys.argv) != 2:
     print("Usage: python3 program_name.py [map_file]")
@@ -13,6 +22,26 @@ filename = sys.argv[1]
 
 # read the JSON data from the file
 game_map = json.load(open(filename, "r"))
+# game_map = [
+#     {"name": "A white room",
+#      "desc": "You are in a simple room with white walls.",
+#      "exits": {"north": 1, "east": 3}
+#      },
+#     {"name": "A blue room",
+#         "desc": "This room is simple, too, but with blue walls.",
+#         "exits": {"east": 2, "south": 0}
+#      },
+#     {"name": "A green room",
+#         "desc": "You are in a simple room, with bright green walls.",
+#         "exits": {"west": 1, "south": 3},
+#         "items": []
+#      },
+#     {"name": "A red room",
+#         "desc": "This room is fancy. It's red!",
+#         "exits": {"north": 2, "west": 0},
+#         "items": ["rose"]
+#      }
+# ]
 restart_map = game_map
 
 
@@ -25,16 +54,16 @@ current_location = game_map[0]
 
 def print_location():
     # print("\n")
-    print("> "+current_location['name'])
+    print(f"> {current_location['name']}")
     # print("\n")
     print("\n"+current_location['desc'])
     if "items" in current_location:
         items_in_room = current_location["items"]
         items = ", ".join(items_in_room)
-        print(f"\nItems : {items}")
+        print(f"\nItems: {items}")
 
     # print("\n")
-    print('\nExits:', ', '.join(current_location['exits'].keys()), "\n")
+    print('\nExits:', ' '.join(current_location['exits'].keys()), "\n")
     # print("\n")
 
 # Handling user input
@@ -156,7 +185,7 @@ def handle_input(input_str):
             print("You're not carrying anything.")
         else:
             inv_str = ", ".join(player_inventory)
-            print(f"Inventory:\n {inv_str}")
+            print(f"Inventory:\n  {inv_str}")
     elif input_str.startswith("drop"):
         item_name = input_str[5:]
         if len(item_name) == 0:
@@ -204,15 +233,15 @@ demon = """
 if filename == "orb6.map":
     print("""
     Gametitle: Orb6
-        
+
     You are in the layer of the demon lord leviathan. His layer is big and unexplored. Your objective is to defeat the demon lord as his curse had been tormenting the land for a decade.
-    But as you are now your powers are useless against him! 
+    But as you are now your powers are useless against him!
 
     You need to search his layers for the many orbs of power. You can only defeat the
-    demon lord if you have the powers of 6 orbs. You must blindly navigate through the different rooms as it is unmapped. 
+    demon lord if you have the powers of 6 orbs. You must blindly navigate through the different rooms as it is unmapped.
 
     You must travel blindly on this lonely search for the orbs.
-    If you happen to enter the room which the demon lord resides without the 6 orbs it will lead to certain defeat. 
+    If you happen to enter the room which the demon lord resides without the 6 orbs it will lead to certain defeat.
 
     You will start your journey at the entance of the layer.
     Be careful warrior the future of this land depends on you!
