@@ -1,45 +1,45 @@
 [
     {
         "name": "Liminal Space",
-        "desc": "You are at a liminal space of a demon's layer",
+        "desc": "You are at a liminal space of the demon lord's city",
         "exits":  {"north": 1, "south": 2, "east": 3},
-        "items": []
+        "items": ["dragon scale"]
     },
     {
         "name": "Mirror Maze",
         "desc": "You are in a room with mirrored walls.",
         "exits": {"south": 0},  
-        "items": ["clear stone"]
+        "items": ["clear orb"]
     },
     {
         "name": "Bat Cavern",
         "desc": "This room looks like a dark cave with bats hanging from the ceiling.",
         "exits": {"north": 0, "east": 6},
-        "items": ["shadow stone"]
+        "items": ["shadow orb","shadow blade"]
     },
     {
         "name": "Bazaar",
         "desc": "You are in a empty market which sells magical weapons.",
         "exits": {"west": 0, "north": 4, "east": 7},
-        "items": ["time stone"]
+        "items": ["time orb","gold bar","silver bar","cloak"]
     },
     {
         "name": "Meat Locker",
         "desc": "This room is fancy. It's red!",
         "exits": {"south": 3, "east": 5},
-        "items": ["life orb"]
+        "items": ["life orb","meat"]
     },
     {
         "name": "Quicksand Pit",
         "desc": "You are in a room, with quick sand pits be careful!",
         "exits": {"west": 4}, 
-        "items": ["earth stone"]
+        "items": ["earth orb","emrald staff"]
     },
     {
         "name": "Volcano",
         "desc": "You are in a active volcano and it is very hot!",
         "exits": {"west": 2},  
-        "items": ["volcanic orb"]
+        "items": ["volcanic orb","wand"]
     },
     {
         "name": "Dojo",

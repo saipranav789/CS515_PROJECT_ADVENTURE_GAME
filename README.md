@@ -43,3 +43,15 @@
 > ### help verb:
 >
 > > I have implemented a help verb which displays all the inputs the user can give in the game and the what each input does.
+
+## how to play game:
+
+    The setting of the game takes place in a fantasy magical land which is suffering because of demon lord leviathan (The villain of the story). You are a warrior set out to defeat the demon lord. But as you are now you dont have enough magical powers to defeat him.
+
+    Inorder to defeat him you need to navigate through the game_map and find 6 orbs scattered across the map. Only with the power of the 6 orbs the demon lord can be defeated. In the game you will come across other items which are of no use to defeat the demon lord. A player can carry only 6 items in his inventory. You must only pick up the orbs and drop useless items you pick up on your journey.
+
+## winning / losing conditions:
+
+    The player will navigate blindly through out the map. You will not know what comes next when you select a direction to go. If the player happens to enter the demon lord's dojo before collecting the 6 orbs. The player will be killed by the demon lord instantly causing the player to lose. The player will be given the option to either restart the game from the starting room or quit the game.
+
+    If the player has all 6 orbs in their inventory when they enter the demon lord's dojo they win!

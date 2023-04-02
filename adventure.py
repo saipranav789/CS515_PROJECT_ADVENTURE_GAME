@@ -138,7 +138,10 @@ def handle_input(input_str):
 
     elif input_str.startswith('get'):
         item_name = input_str[4:]
-        if len(item_name) == 0:
+        if len(player_inventory) == 6:
+            print("You cannot carry more than 6 items in your inventory")
+            pass
+        elif len(item_name) == 0:
             print("Sorry, you need to 'get' something.\n")
         else:
             if 'items' in current_location and item_name in current_location['items']:
@@ -197,22 +200,24 @@ demon = """
   `\     /`~( )~`\     /'
     `\_/'   `"`   `\_/'  
 """
+if filename == "orb6.map":
+    print("""
+    Gametitle: Orb6
+        
+    You are in the layer of the demon lord leviathan. His layer is big and unexplored. Your objective is to defeat the demon lord as his curse had been tormenting the land for a decade.
+    But as you are now your powers are useless against him! 
 
-print("""
-Gametitle: Orb6
-    
-You are in the layer of the demon lord leviathan. His layer is big and unexplored. Your objective is to defeat the demon lord as his curse had been tormenting the land for a decade.
-But as you are now your powers are useless against him! 
+    You need to search his layers for the many orbs of power. You can only defeat the
+    demon lord if you have the powers of 6 orbs. You must blindly navigate through the different rooms as it is unmapped. 
 
-You need to search his layers for the many orbs of power. You can only defeat the
-demon lord if you have the powers of 6 orbs. You must blindly navigate his layer as it is unmapped. 
+    You must travel blindly on this lonely search for the orbs.
+    If you happen to enter the room which the demon lord resides without the 6 orbs it will lead to certain defeat. 
 
-You must travel blindly on this lonely search for the orbs.
-If you happen to enter the room which the demon lord resides without the 6 orbs it will lead to certain defeat. 
+    You will start your journey at the entance of the layer.
+    Be careful warrior the future of this land depends on you!
 
-You will start your journey at the entance of the layer.
-Be careful warrior the future of this land depends on you!
- """)
+    Use the help command warrior to see what you can do in this world.
+    """)
 game_running = True
 location_count = 0
 # start the game loop
