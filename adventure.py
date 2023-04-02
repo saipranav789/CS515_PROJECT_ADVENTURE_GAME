@@ -180,7 +180,7 @@ def handle_input(input_str):
 
 
 # demon lord ascii art
-demon = """
+demon_alive = """
     DEMON LORD LEVIATHAN
            ,^^^^^,
           #_   _#
@@ -195,23 +195,39 @@ demon = """
   `\     /`~( )~`\     /'
     `\_/'   `"`   `\_/'  
 """
+demon_ded = """
+    DEMON LORD LEVIATHAN
+           ,^^^^^,
+          #_   _#
+         |x ` ` x|
+         |  u    |         
+         \  ^   /
+         |\___/|
+  ___ ___/:     :\___ ___
+/   '   \|` `'"`/|   `   \\
+|        |      |        |
+ \       \.  ,  /       /
+  `\     /`~( )~`\     /'
+    `\_/'   `"`   `\_/'  
+"""
 if filename == "orb6.map":
     print("""
     Gametitle: Orb6
 
-    You are in the layer of the demon lord leviathan. His layer is big and unexplored. Your objective is to defeat the demon lord as his curse had been tormenting the land for a decade.
+    You are in the layer of the demon lord leviathan. His territory is big and unexplored. 
+    Your objective is to defeat the demon lord,
+    as his curse had been tormenting the land for a decade.
     But as you are now your powers are useless against him!
 
     You need to search his layers for the many orbs of power. You can only defeat the
     demon lord if you have the powers of 6 orbs. You must blindly navigate through the different rooms as it is unmapped.
-
     You must travel blindly on this lonely search for the orbs.
     If you happen to enter the room which the demon lord resides without the 6 orbs it will lead to certain defeat.
 
     You will start your journey at the entance of the layer.
     Be careful warrior the future of this land depends on you!
 
-    Use the help command warrior to see what you can do in this world.
+    (Use the help command warrior to see what you can do in this world.)
     """)
 game_running = True
 location_count = 0
@@ -221,8 +237,8 @@ while game_running:
         print_location()
         location_count += 1
     if 'boss' in current_location:
-        print(demon)
-        if len(player_inventory) >= 6:
+        if len(player_inventory) == 6 and "clear orb" in player_inventory and "shadow orb" in player_inventory and "time orb" in player_inventory and "volcanic orb" in player_inventory and "life orb" in player_inventory and "earth orb" in player_inventory:
+            print(demon_ded)
             print(
                 "The Demon Lord attacked you! but you used the power of the 6 orbs and defeated him!!!\n")
             print("\nYou Win!")
@@ -237,6 +253,7 @@ while game_running:
             else:
                 break
         else:
+            print(demon_alive)
             print(
                 "The Demon Lord attacked you! since you didn't have the power of the 6 orbs he kills you :(")
             print("\nYou Lose!")

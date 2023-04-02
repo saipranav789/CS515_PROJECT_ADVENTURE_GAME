@@ -34,15 +34,97 @@
 >
 > > Instead of using the go verb i.e: "go east" the player can just type the first letter i.e: "e" to move in that direction.
 
+    Test Sample:
+    > A white room
+
+    You are in a simple room with white walls.
+
+    Exits: north east
+
+    What would you like to do? e
+    You go east.
+
+    > A red room
+
+    This room is fancy. It's red!
+
+    Items: rose
+
+    Exits: north west
+
+    What would you like to do? w
+    You go west.
+
+    > A white room
+
+    You are in a simple room with white walls.
+
+    Exits: north east
+
+    What would you like to do? nw
+    There's no way to go northwest.
+    What would you like to do?
+
 > ### drop verb:
 >
 > > I have implemented a drop verb where the player can drop items from their inventory into the room they are currently in.
 > > i.e drop [item name] **example: drop clear stone**
 > > If a item is dropped the item is added to the room's items after it is removed from the inventory
 
+    Test Sample:
+    > A red room
+
+    This room is fancy. It's red!
+
+    Items: rose
+
+    Exits: north west
+
+    What would you like to do? get rose
+    You pick up the rose.
+    What would you like to do? inv
+    Inventory:
+    rose
+    What would you like to do? look
+    > A red room
+
+    This room is fancy. It's red!
+
+    Exits: north west
+
+    What would you like to do? drop rose
+    You drop the rose.
+    What would you like to do? look
+    > A red room
+
+    This room is fancy. It's red!
+
+    Items: rose
+
+    Exits: north west
+
+    What would you like to do?
+
 > ### help verb:
 >
 > > I have implemented a help verb which displays all the inputs the user can give in the game and the what each input does.
+
+    What would you like to do? help
+    You can run the following commands:
+
+    go : this verb is used to move in a direction listed in room exits
+    (example: go east)
+    Player can also directly enter the direction without using go i.e e for east to go east
+
+    get : used to pick up a item (example: get life orb)
+
+    look : used to understand where the player is currently
+
+    inventory : used to check the items in inventory
+
+    help : provides the commands a player can use in the game
+
+quit : used to exit/end the game
 
 ## how to play game:
 
@@ -52,6 +134,10 @@
 
 ## winning / losing conditions:
 
-> The player will navigate blindly through out the map. You will not know what comes next when you select a direction to go. If the player happens to enter the demon lord's dojo before collecting the 6 orbs. The player will be killed by the demon lord instantly causing the player to lose. The player will be given the option to either restart the game from the starting room or quit the game.
+> The player will navigate blindly through out the map. You will not know what comes next when you select a direction to go. If the player happens to enter the demon lord's dojo before collecting the 6 orbs. The player will be killed by the demon lord instantly causing the player to lose. The player will be given the option to either restart the game from the starting room or quit the game. There will be many items to pick up all over the map but the player must pick up only the orbs and have all 6 orbs in their inventory before going to the demon lords dojo.
+
+> The player's inventory has the capacity to hold only 6 items and they are ment for the orbs. If the player has other items in his inventory he must drop them to be able to pick up other items. These other items are just distractions and will not help in defeating the demon lord.
 
 > If the player has all 6 orbs in their inventory when they enter the demon lord's dojo they win!
+
+## Game Map:
