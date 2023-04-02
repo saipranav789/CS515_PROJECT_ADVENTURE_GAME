@@ -3,7 +3,7 @@
         "name": "Liminal Space",
         "desc": "You are at a liminal space of a demon's layer",
         "exits":  {"north": 1, "south": 2, "east": 3},
-        "items": ["white stone"]
+        "items": []
     },
     {
         "name": "Mirror Maze",

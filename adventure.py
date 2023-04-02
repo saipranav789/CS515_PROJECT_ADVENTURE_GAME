@@ -5,7 +5,7 @@ import re
 
 # check if the command line argument is provided
 if len(sys.argv) != 2:
-    print("Usage: python program_name.py map_file.json")
+    print("Usage: python3 program_name.py [map_file]")
     sys.exit()
 
 # get the file name from the command line argument
@@ -41,9 +41,6 @@ def print_location():
 
 def handle_input(input_str):
     input_str = input_str.lower().strip()
-    # print('@@@@@@@@@@@@@@@@@@@@@@')
-    # print(input_str)
-    # print('@@@@@@@@@@@@@@@@@@@@@@')
 
     # valid_verbs = ['go', 'get', 'look', 'inventory', 'help', 'quit']
     valid_verb_dict = {"go": "this verb is used to move in a direction listed in room exits \n(example: go east) \nPlayer can also directly enter the direction without using go i.e e for east to go east", "\nget": "used to pick up a item (example: get life orb)",
@@ -171,11 +168,15 @@ def handle_input(input_str):
             else:
                 print(f"There's no {item_name} in inventory.\n")
     elif input_str.startswith("look"):
-        pass
+        print_location()
     elif input_str.startswith("help"):
         print("You can run the following commands: \n")
         for key, value in valid_verb_dict.items():
             print(key, ":", value)
+    # implementing lock and unlock extension
+    # elif input_str.startswith("unlock"):
+    #     if "palace key" in player_inventory:
+
     else:
         print('I don\'t understand that enter a valid command.')
 
@@ -213,9 +214,12 @@ You will start your journey at the entance of the layer.
 Be careful warrior the future of this land depends on you!
  """)
 game_running = True
+location_count = 0
 # start the game loop
 while game_running:
-    print_location()
+    if location_count == 0:
+        print_location()
+        location_count += 1
     if 'boss' in current_location:
         print(demon)
         if len(player_inventory) >= 6:
@@ -254,8 +258,9 @@ while game_running:
         new_location = handle_input(action)
         if new_location:
             current_location = new_location
+            print_location()
 
-    except (KeyboardInterrupt, EOFError):
+    except (EOFError):
         print("\nUse 'quit' to exit.")
         pass
 
