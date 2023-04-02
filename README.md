@@ -14,7 +14,7 @@
 
 ## Hours Spent on project:
 
-> Around 12 hours
+> Around 12 hours but I spent 8-9 hours just debugging so I can match the autograder.
 
 ## How I tested my code:
 

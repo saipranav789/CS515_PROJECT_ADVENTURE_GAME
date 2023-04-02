@@ -13,26 +13,7 @@ filename = sys.argv[1]
 
 # read the JSON data from the file
 game_map = json.load(open(filename, "r"))
-# game_map = [
-#     {"name": "A white room",
-#      "desc": "You are in a simple room with white walls.",
-#      "exits": {"north": 1, "east": 3}
-#      },
-#     {"name": "A blue room",
-#         "desc": "This room is simple, too, but with blue walls.",
-#         "exits": {"east": 2, "south": 0}
-#      },
-#     {"name": "A green room",
-#         "desc": "You are in a simple room, with bright green walls.",
-#         "exits": {"west": 1, "south": 3},
-#         "items": []
-#      },
-#     {"name": "A red room",
-#         "desc": "This room is fancy. It's red!",
-#         "exits": {"north": 2, "west": 0},
-#         "items": ["rose"]
-#      }
-# ]
+
 restart_map = game_map
 player_inventory = []
 
@@ -42,18 +23,14 @@ current_location = game_map[0]
 
 
 def print_location():
-    # print("\n")
     print(f"> {current_location['name']}")
-    # print("\n")
     print(f"\n{current_location['desc']}")
-    if "items" in current_location:
+    if "items" in current_location and len(current_location["items"]) > 0:
         items_in_room = current_location["items"]
         items = ", ".join(items_in_room)
         print(f"\nItems: {items}")
-
-    # print("\n")
     print(f"\nExits: {' '.join(current_location['exits'].keys())}\n")
-    # print("\n")
+
 
 # Handling user input
 
@@ -84,7 +61,7 @@ def handle_input(input_str):
             if direction in current_location['exits']:
                 new_location_id = current_location['exits'][direction]
                 new_location = game_map[new_location_id]
-                print(f'You go, {direction}.\n')
+                print(f'You go {direction}.\n')
                 return new_location
             else:
                 print(f"There's no way to go {direction}.")
@@ -93,7 +70,7 @@ def handle_input(input_str):
             if direction in current_location['exits']:
                 new_location_id = current_location['exits'][direction]
                 new_location = game_map[new_location_id]
-                print(f'You go, {direction}.\n')
+                print(f'You go {direction}.\n')
                 return new_location
             else:
                 print(f"There's no way to go {direction}.")
@@ -102,7 +79,7 @@ def handle_input(input_str):
             if direction in current_location['exits']:
                 new_location_id = current_location['exits'][direction]
                 new_location = game_map[new_location_id]
-                print(f'You go, {direction}.\n')
+                print(f'You go {direction}.\n')
                 return new_location
             else:
                 print(f"There's no way to go {direction}.")
@@ -112,7 +89,7 @@ def handle_input(input_str):
             if direction in current_location['exits']:
                 new_location_id = current_location['exits'][direction]
                 new_location = game_map[new_location_id]
-                print(f'You go, {direction}.\n')
+                print(f'You go {direction}.\n')
                 return new_location
             else:
                 print(f"There's no way to go {direction}.")
@@ -174,7 +151,10 @@ def handle_input(input_str):
             print("You're not carrying anything.")
         else:
             inv_str = ", ".join(player_inventory)
-            print(f"Inventory:\n  {inv_str}")
+            # print(f"Inventory:\n  {inv_str}")
+            print("Inventory:")
+            for item in player_inventory:
+                print(f"  {item}")
     elif input_str.startswith("drop"):
         item_name = input_str[5:]
         if len(item_name) == 0:
@@ -195,10 +175,6 @@ def handle_input(input_str):
         print("You can run the following commands: \n")
         for key, value in valid_verb_dict.items():
             print(key, ":", value)
-    # implementing lock and unlock extension
-    # elif input_str.startswith("unlock"):
-    #     if "palace key" in player_inventory:
-
     else:
         print('I don\'t understand that enter a valid command.')
 
