@@ -2,16 +2,7 @@
 import json
 import sys
 import re
-"""
-doctests for adventure.py
 
->>> go west
-There's no way to go west.
-What would you like to do? 
-
-
-
-"""
 # check if the command line argument is provided
 if len(sys.argv) != 2:
     print("Usage: python3 program_name.py [map_file]")
@@ -43,8 +34,6 @@ game_map = json.load(open(filename, "r"))
 #      }
 # ]
 restart_map = game_map
-
-
 player_inventory = []
 
 # Set the starting location
@@ -56,14 +45,14 @@ def print_location():
     # print("\n")
     print(f"> {current_location['name']}")
     # print("\n")
-    print("\n"+current_location['desc'])
+    print(f"\n{current_location['desc']}")
     if "items" in current_location:
         items_in_room = current_location["items"]
         items = ", ".join(items_in_room)
         print(f"\nItems: {items}")
 
     # print("\n")
-    print('\nExits:', ' '.join(current_location['exits'].keys()), "\n")
+    print(f"\nExits: {' '.join(current_location['exits'].keys())}\n")
     # print("\n")
 
 # Handling user input
@@ -84,7 +73,7 @@ def handle_input(input_str):
             if direction in current_location['exits']:
                 new_location_id = current_location['exits'][direction]
                 new_location = game_map[new_location_id]
-                print('You go', direction + '.\n')
+                print(f'You go {direction}.\n')
                 return new_location
             else:
                 print(f"There's no way to go {direction}.")
@@ -95,7 +84,7 @@ def handle_input(input_str):
             if direction in current_location['exits']:
                 new_location_id = current_location['exits'][direction]
                 new_location = game_map[new_location_id]
-                print('You go', direction + '.')
+                print(f'You go, {direction}.\n')
                 return new_location
             else:
                 print(f"There's no way to go {direction}.")
@@ -104,7 +93,7 @@ def handle_input(input_str):
             if direction in current_location['exits']:
                 new_location_id = current_location['exits'][direction]
                 new_location = game_map[new_location_id]
-                print('You go', direction + '.')
+                print(f'You go, {direction}.\n')
                 return new_location
             else:
                 print(f"There's no way to go {direction}.")
@@ -113,7 +102,7 @@ def handle_input(input_str):
             if direction in current_location['exits']:
                 new_location_id = current_location['exits'][direction]
                 new_location = game_map[new_location_id]
-                print('You go', direction + '.')
+                print(f'You go, {direction}.\n')
                 return new_location
             else:
                 print(f"There's no way to go {direction}.")
@@ -123,7 +112,7 @@ def handle_input(input_str):
             if direction in current_location['exits']:
                 new_location_id = current_location['exits'][direction]
                 new_location = game_map[new_location_id]
-                print('You go', direction + '.')
+                print(f'You go, {direction}.\n')
                 return new_location
             else:
                 print(f"There's no way to go {direction}.")
@@ -133,7 +122,7 @@ def handle_input(input_str):
             if direction in current_location['exits']:
                 new_location_id = current_location['exits'][direction]
                 new_location = game_map[new_location_id]
-                print('You go', direction + '.')
+                print(f'You go {direction}.\n')
                 return new_location
             else:
                 print(f"There's no way to go {direction}.")
@@ -142,7 +131,7 @@ def handle_input(input_str):
             if direction in current_location['exits']:
                 new_location_id = current_location['exits'][direction]
                 new_location = game_map[new_location_id]
-                print('You go', direction + '.')
+                print(f'You go {direction}.\n')
                 return new_location
             else:
                 print(f"There's no way to go {direction}.")
@@ -151,7 +140,7 @@ def handle_input(input_str):
             if direction in current_location['exits']:
                 new_location_id = current_location['exits'][direction]
                 new_location = game_map[new_location_id]
-                print('You go', direction + '.')
+                print(f'You go {direction}.\n')
                 return new_location
             else:
                 print(f"There's no way to go {direction}.")
@@ -161,7 +150,7 @@ def handle_input(input_str):
             if direction in current_location['exits']:
                 new_location_id = current_location['exits'][direction]
                 new_location = game_map[new_location_id]
-                print('You go', direction + '.')
+                print(f'You go {direction}.\n')
                 return new_location
             else:
                 print(f"There's no way to go {direction}.")
@@ -177,7 +166,7 @@ def handle_input(input_str):
             if 'items' in current_location and item_name in current_location['items']:
                 current_location['items'].remove(item_name)
                 player_inventory.append(item_name)
-                print('You pick up the', item_name + '.')
+                print(f'You pick up the {item_name}.')
             else:
                 print(f"There's no {item_name} anywhere.")
     elif input_str == 'inventory' or input_str == 'inv' or input_str == 'i':
@@ -195,7 +184,7 @@ def handle_input(input_str):
                 if "items" in current_location:
                     current_location['items'].append(item_name)
                     player_inventory.remove(item_name)
-                    print('You drop the', item_name + '.')
+                    print(f'You drop the {item_name}.')
                 else:
                     current_location['items'] = [item_name]
             else:
