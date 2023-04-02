@@ -141,3 +141,9 @@ quit : used to exit/end the game
 > If the player has all 6 orbs in their inventory when they enter the demon lord's dojo they win!
 
 ## Game Map:
+
+<img width="724" alt="Game_Map" src="https://user-images.githubusercontent.com/113039239/229385223-032f4857-7f0b-450b-8214-6e91c4c47f50.png">
+
+> > Fastest way to lose: go east twice
+
+> > Fastest way to win: There is no fast way to win you must navigate to every room except the dojo using the above map for reference and pick up all orbs.
