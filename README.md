@@ -147,3 +147,18 @@ quit : used to exit/end the game
 > > Fastest way to lose: go east twice
 
 > > Fastest way to win: There is no fast way to win you must navigate to every room except the dojo using the above map for reference and pick up all orbs.
+
+# Running the game:
+
+### enter the below command in the terminal:
+
+> python3 adventure.py orb6.map
+
+### pick up the following orbs scattered across the map
+
+> "clear orb", "shadow orb" , "time orb", "volcanic orb", "life orb", and "earth orb"
+
+### head to the dojo
+
+> If you have the above 6 orbs you reach the dojo you will win.
+> If you dont have the non orb items in your inventory or less than 6 orbs you will lose. You will then be given a chance to restart from liminal space again.(play again)
