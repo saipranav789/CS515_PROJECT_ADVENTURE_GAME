@@ -38,7 +38,6 @@ def print_location():
 def handle_input(input_str):
     input_str = input_str.lower().strip()
 
-    # valid_verbs = ['go', 'get', 'look', 'inventory', 'help', 'quit']
     valid_verb_dict = {"go": "this verb is used to move in a direction listed in room exits \n(example: go east) \nPlayer can also directly enter the direction without using go i.e e for east to go east", "\nget": "used to pick up a item (example: get life orb)",
                        "\nlook": "used to understand where the player is currently", '\ninventory': "used to check the items in inventory", '\nhelp': "provides the commands a player can use in the game", '\nquit': "used to exit/end the game"}
 
