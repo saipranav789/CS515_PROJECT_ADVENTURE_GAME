@@ -124,7 +124,7 @@
 
     help : provides the commands a player can use in the game
 
-quit : used to exit/end the game
+    quit : used to exit/end the game
 
 ## how to play game:
 
